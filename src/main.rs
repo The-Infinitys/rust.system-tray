@@ -1,7 +1,12 @@
-use std::{thread, time::Duration};
-use system_tray::{Event, Menu, SystemTray};
-
 fn main() {
+    use std::thread;
+    let handle = thread::spawn(process);
+    handle.join().unwrap();
+}
+fn process() {
+    use std::{thread, time::Duration};
+    use system_tray::{Event, Menu, SystemTray};
+
     // Create a system tray instance
     let mut tray = SystemTray::new("TestApp", "com.example.testapp");
 
